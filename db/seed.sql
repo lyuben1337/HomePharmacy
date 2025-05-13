@@ -19,9 +19,3 @@ VALUES
   (2, '11:00,15:04,21:00', 'Mon,Tue,Fri', 2, '2025-05-01', NULL, 'Перед завтраком', 1),
   (2, '12:00', 'Sun', 2, '2025-05-01', NULL, 'Перед завтраком', 0);
 
--- Intake history
-INSERT INTO intake_history (medication_id, scheduled_at, taken_at, source, dose_taken, notes)
-VALUES 
-  (1, '2025-05-10T08:00:00Z', '2025-05-10T08:05:00Z', 'reminder', 1, 'Принял вовремя'),
-  (1, '2025-05-10T20:00:00Z', NULL, 'reminder', NULL, 'Забыл принять'),
-  (2, '2025-05-08T09:00:00Z', '2025-05-08T09:02:00Z', 'manual', 1, NULL);

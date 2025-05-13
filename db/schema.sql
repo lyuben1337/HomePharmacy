@@ -10,7 +10,6 @@ CREATE TABLE IF NOT EXISTS medication (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL,
     dosage TEXT,
-    image_uri TEXT,
     recipe_uri TEXT,
     notes TEXT,
     created_at TEXT DEFAULT CURRENT_TIMESTAMP
