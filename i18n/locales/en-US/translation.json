@@ -1,0 +1,38 @@
+{
+  "screens": {
+    "settings": "Settings",
+    "home": "Home",
+    "medications": "Medications",
+    "medication": "Medication",
+    "not-found": "Oops! Not Found"
+  },
+  "not-found": {
+    "home-page": "Home Page",
+    "screen-not-exist": "Screen doesn't exist"
+  },
+  "settings": {
+    "title": {
+      "theme": "Theme",
+      "language": "Language",
+      "about": "About this app"
+    },
+    "theme": {
+      "system": "System",
+      "light": "Light",
+      "dark": "Dark",
+      "accessible": "Accessibility Mode"
+    },
+    "locale": {
+      "en-US": "English",
+      "uk-UA": "Ukrainian"
+    }
+  },
+  "medication": {
+    "units": "Units"
+  },
+  "home": {},
+  "shared": {
+    "record": "{{count}} record",
+    "record_plural": "{{count}} records"
+  }
+}

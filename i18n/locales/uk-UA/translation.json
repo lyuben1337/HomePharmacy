@@ -1,0 +1,68 @@
+{
+  "screens": {
+    "settings": "Налаштування",
+    "home": "Головна",
+    "medications": "Ліки",
+    "not-found": "Упс! Не знайдено"
+  },
+  "not-found": {
+    "home-page": "Головна сторінка",
+    "screen-not-exist": "Такого екрана не існує"
+  },
+  "medications": {
+    "add-medication": "Додати ліки",
+    "medication-name": "Назва ліків",
+    "dosage": "Дозування"
+  },
+  "medication-unit": {
+    "dose": "Доза",
+    "dose_1": "Доза",
+    "dose_2": "Дози",
+    "dose_5": "Доз"
+  },
+  "reminder": {
+    "dose": "доза",
+    "dose_1": "доза",
+    "dose_2": "дози",
+    "dose_5": "доз",
+    "message": "Прийміть {{doses}} {{name}} {{dosage}}"
+  },
+  "settings": {
+    "title": {
+      "theme": "Тема",
+      "language": "Мова",
+      "about": "Про застосунок"
+    },
+    "theme": {
+      "system": "Системна",
+      "light": "Світла",
+      "dark": "Темна",
+      "accessible": "Покращена видимість"
+    },
+    "locale": {
+      "en-US": "Англійська",
+      "uk-UA": "Українська"
+    }
+  },
+  "medication": {
+    "units": "Одиниці",
+    "reminders": "Нагадування",
+    "notes": "Примітки",
+    "recipe": "Рецепт",
+    "add-recipe": "Додати рецепт"
+  },
+  "home": {},
+  "shared": {
+    "record": "{{count}} запис",
+    "record_1": "{{count}} запис",
+    "record_2": "{{count}} записи",
+    "record_5": "{{count}} записів",
+    "add": "Додати",
+    "view": "Переглянути",
+    "until": "до",
+    "camera": "Камера",
+    "gallery": "Галерея",
+    "cancel": "Скасувати",
+    "delete": "Видалити"
+  }
+}
