@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     height: "25%",
   },
   medium: {
-    height: "60%",
+    height: "50%",
   },
   avoidingView: {
     width: "100%",

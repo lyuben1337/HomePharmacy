@@ -26,7 +26,7 @@ export abstract class Repository<T extends { id?: number }> {
         return result.length > 0 ? this.mapRowToEntity(result[0]) : null;
     }
 
-    async create(data: T): Promise<void> {
+    async create(data: Partial<T>): Promise<void> {
         const row = this.mapEntityToRow(data);
         const filteredData = this.filterNonColumnFields(row);
         const keys = Object.keys(filteredData);
@@ -38,7 +38,7 @@ export abstract class Repository<T extends { id?: number }> {
         await db().runAsync(query, values);
     }
 
-    async update(id: number, data: T): Promise<void> {
+    async update(id: number, data: Partial<T>): Promise<void> {
         const row = this.mapEntityToRow(data);
         const filteredData = this.filterNonColumnFields(row);
         const keys = Object.keys(filteredData);

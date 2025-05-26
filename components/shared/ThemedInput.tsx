@@ -37,6 +37,7 @@ export default function ThemedInput({
 const styles = StyleSheet.create({
   default: {
     width: "100%",
+    borderRadius: 8,
     fontSize: 16,
     lineHeight: 20,
     padding: 10,

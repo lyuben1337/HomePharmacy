@@ -30,4 +30,20 @@ export class MedicationRepository extends Repository<Medication> {
 
         return medication;
     }
+    async addUnit(
+        medicationId: number,
+        unit: { expiration_date: string; doseCount: number }
+    ) {
+        await db().runAsync(
+            `INSERT INTO medication_unit (medication_id, expiration_date, dose_count)
+     VALUES (?, ?, ?)`,
+            [medicationId, unit.expiration_date, unit.doseCount]
+        );
+    }
+
+
+    async deleteUnit(unitId: number) {
+        await db().runAsync(`DELETE FROM medication_unit WHERE id = ?`, [unitId]);
+    }
+
 }

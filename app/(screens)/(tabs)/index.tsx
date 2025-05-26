@@ -5,28 +5,28 @@ import { ThemedList } from "@/components/shared/ThemedList";
 import { Medication } from "@/models/Medication";
 import { MedicationRepository } from "@/repositories/MedicationRepository";
 import { router } from "expo-router";
-import { getAllScheduledNotificationsAsync } from "expo-notifications";
+import { MedicationFormModal } from "@/components/medications/MedicationFormModal";
 
 export default function Index() {
     const [medications, setMedications] = useState<Medication[]>([]);
+    const [modalVisible, setModalVisible] = useState(false);
     const repository = new MedicationRepository();
 
-    useEffect(() => {
-        const fetchMedications = async () => {
-            try {
-                const meds = await repository.getAll();
-                setMedications(meds);
-            } catch (error) {
-                console.error("Помилка при завантаженні медикаментів:", error);
-            }
-        };
+    const loadMeds = async () => {
+        try {
+            const meds = await repository.getAll();
+            setMedications(meds);
+        } catch (error) {
+            console.error("Помилка при завантаженні медикаментів:", error);
+        }
+    };
 
-        fetchMedications();
+    useEffect(() => {
+        loadMeds();
     }, []);
 
-    const handleAddMedication = async () => {
-        const scheduled = await getAllScheduledNotificationsAsync();
-        console.log("📅 Запланированные уведомления:", scheduled);
+    const handleAddMedication = () => {
+        setModalVisible(true);
     };
 
     return (
@@ -37,6 +37,11 @@ export default function Index() {
                 getLabel={(med) => med.name}
                 onItemPress={(med) => router.navigate(`/medications/${med.id}`)}
                 newItemPress={handleAddMedication}
+            />
+            <MedicationFormModal
+                visible={modalVisible}
+                onClose={() => setModalVisible(false)}
+                onCreated={loadMeds}
             />
         </ThemedView>
     );

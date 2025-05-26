@@ -1,17 +1,28 @@
-import { View, StyleSheet } from "react-native";
+import { useState } from "react";
+import { View, StyleSheet, Pressable } from "react-native";
 import { useTranslation } from "react-i18next";
+import { useThemeColor } from "@/hooks/useThemeColor";
 import { ThemedText } from "@/components/shared/ThemedText";
 import { ThemedView } from "@/components/shared/ThemedView";
-import { NoteStickerIcon } from "@/components/shared/Icons";
-import { useThemeColor } from "@/hooks/useThemeColor";
+import { NoteStickerIcon, PencilIcon, CheckIcon } from "@/components/shared/Icons";
+import ThemedInput from "@/components/shared/ThemedInput";
 
 type Props = {
     notes?: string;
+    onSave: (updatedNotes: string) => void;
 };
 
-export function MedicationNotesSection({ notes }: Props) {
+export function MedicationNotesSection({ notes = "", onSave }: Props) {
     const { t } = useTranslation();
     const textColor = useThemeColor("text");
+
+    const [isEditing, setIsEditing] = useState(false);
+    const [tempNotes, setTempNotes] = useState(notes);
+
+    const handleSave = () => {
+        onSave(tempNotes);
+        setIsEditing(false);
+    };
 
     return (
         <View style={styles.section}>
@@ -22,9 +33,27 @@ export function MedicationNotesSection({ notes }: Props) {
                         {t("medication.notes")}
                     </ThemedText>
                 </View>
+
+                <Pressable onPress={isEditing ? handleSave : () => setIsEditing(true)}>
+                    {isEditing ? (
+                        <CheckIcon size={20} color={textColor} />
+                    ) : (
+                        <PencilIcon size={18} color={textColor} />
+                    )}
+                </Pressable>
             </View>
+
             <ThemedView style={styles.notesView}>
-                <ThemedText>{notes}</ThemedText>
+                {isEditing ? (
+                    <ThemedInput
+                        multiline
+                        value={tempNotes}
+                        onChangeText={setTempNotes}
+                        placeholder="Додайте нотатки..."
+                    />
+                ) : (
+                    <ThemedText>{notes || "Додайте нотатки..."}</ThemedText>
+                )}
             </ThemedView>
         </View>
     );
@@ -36,6 +65,7 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         marginHorizontal: 16,
         justifyContent: "space-between",
+        alignItems: "center",
     },
     sectionTitleView: {
         flexDirection: "row",
@@ -44,6 +74,6 @@ const styles = StyleSheet.create({
     },
     notesView: {
         padding: 16,
-        height: 120,
+        minHeight: 120,
     },
 });
